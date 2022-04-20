@@ -35,4 +35,4 @@ export function ModalLink({link, title, closeModal}){
         />
     </>
   );
-}
+};
