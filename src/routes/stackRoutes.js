@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../Screens/Home';
 import Detail from '../Screens/Detail';
+import Search from '../Screens/Search';
+import Colors from '../Themes/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,20 @@ export default function StackRoutes(){
           options={{
             headerShown: false,
             title: 'Details'
+          }}
+        />
+        <Stack.Screen 
+          name='Search'
+          component={Search}
+          options={{
+            title: 'Search',
+            headerTintColor: Colors.white,
+            headerTitleStyle: {
+              color: Colors.white,
+            },
+            headerStyle: {
+              backgroundColor: Colors.appBackground
+            }
           }}
         />
     </Stack.Navigator>

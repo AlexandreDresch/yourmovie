@@ -20,6 +20,7 @@ export default function Home(){
   const [ topMovies, setTopMovies ] = useState([]);
   const [ bannerMovie, setBannerMovie ] = useState({});
   const [ loading, setLoading ] = useState(true);
+  const [ input, setInput ] = useState('');
 
   const navigation = useNavigation();
 
@@ -80,6 +81,13 @@ export default function Home(){
     
   }
 
+  function handleSearchMovie() {
+    if(input === '') return;
+
+    navigation.navigate('Search', { name: input });
+    setInput('');
+  }
+
   if(loading) {
     return (
       <View style={styles.container}>
@@ -101,8 +109,13 @@ export default function Home(){
         <TextInput 
           placeholder='Ex Interestellar'
           style={styles.input}
+          value={input}
+          onChangeText={ (text) => setInput(text) }
         />
-        <TouchableOpacity style={styles.searchButton}>
+        <TouchableOpacity 
+          style={styles.searchButton}
+          onPress={handleSearchMovie}
+        >
           <Feather 
             name='search' size={30} color={Colors.white}
           />

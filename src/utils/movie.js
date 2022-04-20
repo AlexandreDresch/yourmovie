@@ -1,10 +1,3 @@
-//type movies = {
- //   object: {
-   //     adult : boolean,
-        
- //   }
-//}
-
 export function getListMovies(size, movies) {
     let popularMovies = [];
 
