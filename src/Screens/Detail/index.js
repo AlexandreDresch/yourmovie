@@ -8,6 +8,7 @@ import api, { key } from '../../services/api';
 import Stars from 'react-native-stars'
 import { Genres } from '../../components/Genres'; 
 import { ModalLink } from '../../components/ModalLink';
+import { saveMovie } from '../../utils/storage';
 
 import { styles } from './styles';
 import Colors from '../../Themes/colors';
@@ -47,6 +48,10 @@ export default function Detail(){
     }
   }, []);
 
+  async function favoriteMovie(movie) {
+    await saveMovie('@yourmovie', movie)
+  }
+
   return (
     <View style={styles.container}>
         <View style={styles.header}>
@@ -62,9 +67,12 @@ export default function Detail(){
             />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.headerButton}>
+          <TouchableOpacity 
+            style={styles.headerButton}
+            onPress={ () => favoriteMovie(movie) }
+          >
             <Ionicons
-              name='bookmark'
+              name='bookmark-outline'
               size={28}
               color={Colors.white}
             />

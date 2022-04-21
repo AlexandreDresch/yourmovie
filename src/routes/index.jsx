@@ -13,7 +13,7 @@ export default function Routes(){
    <Drawer.Navigator
    screenOptions={{
     drawerStyle:{
-      backgroundColor: Colors.drawerBackground,
+      backgroundColor: Colors.appBackground,
       paddingTop: 20,
     },
     drawerActiveBackgroundColor: Colors.black,
