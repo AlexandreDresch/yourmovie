@@ -8,7 +8,7 @@ import api, { key } from '../../services/api';
 import Stars from 'react-native-stars'
 import { Genres } from '../../components/Genres'; 
 import { ModalLink } from '../../components/ModalLink';
-import { saveMovie } from '../../utils/storage';
+import { saveMovie, hasMovie, deleteMovie } from '../../utils/storage';
 
 import { styles } from './styles';
 import Colors from '../../Themes/colors';
@@ -19,6 +19,7 @@ export default function Detail(){
 
   const [ movie, setMovie ] = useState({});
   const [ openLink, setOpenLink ] = useState(false);
+  const [ favoritedMovie, setFavoritedMovie ] = useState(false);
 
   useEffect(() => {
     let isActive = true;
@@ -36,6 +37,8 @@ export default function Detail(){
 
       if(isActive) {
         setMovie(response.data);
+        const isFavorite = await hasMovie(response.data);
+        setFavoritedMovie(isFavorite);
       }
     }
 
@@ -48,8 +51,15 @@ export default function Detail(){
     }
   }, []);
 
-  async function favoriteMovie(movie) {
-    await saveMovie('@yourmovie', movie)
+  async function handleFavoriteMovie(movie) {
+    if(favoritedMovie){
+      await deleteMovie(movie.id);
+      setFavoritedMovie(false);
+    } else {
+      await saveMovie('@yourmovie', movie)
+      setFavoritedMovie(true);
+    }
+
   }
 
   return (
@@ -69,13 +79,21 @@ export default function Detail(){
 
           <TouchableOpacity 
             style={styles.headerButton}
-            onPress={ () => favoriteMovie(movie) }
+            onPress={ () => handleFavoriteMovie(movie) }
           >
-            <Ionicons
-              name='bookmark-outline'
-              size={28}
-              color={Colors.white}
-            />
+            { favoritedMovie ? (
+              <Ionicons
+                name='bookmark'
+                size={28}
+                color={Colors.white}
+              />
+            ) : (
+              <Ionicons
+                name='bookmark-outline'
+                size={28}
+                color={Colors.white}
+              />
+            )}
           </TouchableOpacity>          
         </View>
         <Image 

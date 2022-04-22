@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function getMoviesSave(key) {
     const myMovies = await AsyncStorage.getItem(key);
@@ -13,6 +13,7 @@ export async function saveMovie(key, newMovie) {
     const hasMovie = moviesStored.some( item => item.id === newMovie.id )
 
     if(hasMovie) {
+        console.log('Já na lista')
         return;
     }
 
@@ -22,17 +23,17 @@ export async function saveMovie(key, newMovie) {
 }
 
 export async function deleteMovie(id) {
-    let moviesStored = await getMoviesSave('yourmovie');
+    let moviesStored = await getMoviesSave('@yourmovie');
 
     let myMovies = moviesStored.filter( item => {
         return ( item.id !== id )
     })
-    await AsyncStorage.setItem('yourmovies', JSON.stringify(myMovies));
+    await AsyncStorage.setItem('@yourmovies', JSON.stringify(myMovies));
     return myMovies;
 }
 
 export async function hasMovie(movie) {
-    let moviesStored = await getMoviesSave('yourmovie');
+    let moviesStored = await getMoviesSave('@yourmovie');
 
     const hasMovie = moviesStored.find( item => item.id === movie.id )
 
