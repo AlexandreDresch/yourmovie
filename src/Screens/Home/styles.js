@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   input: {
     backgroundColor: Colors.transparentWhite,
     width: '85%',
-    height: 50,
+    height: 40,
     borderRadius: 50,
     paddingVertical: 8,
     paddingHorizontal: 15,
@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 10,
   },
   scrollTitle: {
     paddingTop: 20,
