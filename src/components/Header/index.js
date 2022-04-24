@@ -8,10 +8,6 @@ import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { styles } from './styles';
 import Colors from '../../Themes/colors';
 
-//type header = {
-//    title: string
-//}
-
 export function Header({title}){
   const navigation = useNavigation();
 

@@ -7,7 +7,4 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.appBackground,
     paddingVertical: 4,
   },
-  listMovies: {
-
-  }
 });

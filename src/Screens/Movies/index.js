@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { Header } from '../../components/Header';
 import { getMoviesSave, deleteMovie } from '../../utils/storage';
 import { FavoriteItem } from '../../components/FavoriteItem';
@@ -49,7 +49,6 @@ export default function Movies(){
       <Header title='My List' />
 
       <FlatList 
-        style={styles.listMovies}
         showsVerticalScrollIndicator={false}
         data={movies}        
         keyExtractor={ item => String(item.id) }

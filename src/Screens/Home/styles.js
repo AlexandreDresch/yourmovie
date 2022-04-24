@@ -48,6 +48,5 @@ export const styles = StyleSheet.create({
   },
   slideList: {
     height: 240,
-    //paddingVertical: 14
   }
 });

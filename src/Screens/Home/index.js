@@ -102,7 +102,7 @@ export default function Home(){
   return (
     <View style={styles.container}>
       <Header 
-        title='Your Movies'
+        title='Your Movie'
       />
 
       <View style={styles.searchContainer}>

@@ -35,7 +35,6 @@ export const styles = StyleSheet.create({
     width: 63,
     height: 63,
     borderRadius: 35,
-    //position: 'absolute',
     top: -35,
     left: 14,
     justifyContent: 'center',
@@ -49,7 +48,6 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingHorizontal: 14,
     paddingVertical: 10,
-    //marginTop: -28,
   },
   voteContent: {
     flexDirection: 'row',
@@ -73,6 +71,5 @@ export const styles = StyleSheet.create({
     paddingBottom: 30,
     color: Colors.white,
     lineHeight: 18,
-
   }
 });
